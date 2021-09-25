@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: stg_stations
+    columns:
+      - name: ID
+        description: This is a unique identifier for a station 
+        tests:
+          - not_null
+
+  - name: stg_traffic
+    columns:
+      - name: utc_time_id
+        tests:
+          - not_null
+  - name: flowmax_range
+    columns:
+      - name: flow_max
+        tests:
+          - not_null
+          - accepted_values:
+              values: [70,71,72,73,74,75]
+  - name: stg_districts
+    columns:
+      - name: ID
+        tests:
+           - unique
+           - not_null
+      - name: Name
+        tests:
+          - accepted_values:
+              values:
+                [ 
+                 "Northwest",
+                 "Northeast",
+                 "North Central",
+                 "Bay Area",
+                 "Central Coast",
+                 "South Central",
+                 "LA/Ventura",
+                 "San Bernardino/Riverside",
+                 "Eastern Sierra",
+                 "Central",
+                 "San Diego/Imperial",
+                 "Orange County"
+                ]
